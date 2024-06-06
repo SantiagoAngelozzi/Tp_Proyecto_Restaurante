@@ -13,9 +13,14 @@ namespace Tp_Progra2
 
         }
 
-        public void RealizarEntrega()
+        public void AsignarseUnaMesa() 
+        { 
+            //ver como hacer esto
+        }
+
+        public void AsignarPlatoAMesa()
         {
-            // Implementación de la entrega
+            //ver como hacer esto
         }
     }
 }

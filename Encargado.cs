@@ -15,16 +15,26 @@ namespace Tp_Progra2
 
         public void AgregarProductoAInventario(Restaurante restaurante, Producto producto)
         {
-            restaurante.Inventario.Add(producto);
+            restaurante += producto;
         }
 
         public void EstablecerPrecioPlato(Restaurante restaurante, Plato plato, decimal nuevoPrecio)
         {
-            plato.Precio = nuevoPrecio;
+            var platoExistente = restaurante.Menu.FirstOrDefault(p => p.Nombre == plato.Nombre);
+            if (platoExistente == null)
+            {
+                throw new KeyNotFoundException("El plato no se encontró en el menú.");
+            }
+            platoExistente.Precio = nuevoPrecio;
         }
 
         public void ConsultarStockVigente(Restaurante restaurante)
         {
+            if (restaurante.Inventario.Count == 0)
+            {
+                throw new InvalidOperationException("El inventario está vacío.");
+            }
+
             foreach (var producto in restaurante.Inventario)
             {
                 Console.WriteLine($"Producto: {producto.Nombre}, Cantidad: {producto.Cantidad}");
@@ -33,13 +43,29 @@ namespace Tp_Progra2
 
         public void ConsultarStockPorAgotarse(Restaurante restaurante, int umbral)
         {
-            foreach (var producto in restaurante.Inventario)
+            var productosPorAgotarse = restaurante.Inventario.Where(p => p.Cantidad < umbral).ToList();
+            if (productosPorAgotarse.Count == 0)
             {
-                if (producto.Cantidad < umbral)
-                {
-                    Console.WriteLine($"Producto: {producto.Nombre}, Cantidad: {producto.Cantidad}");
-                }
+                throw new InvalidOperationException("No hay productos por agotarse según el umbral proporcionado.");
             }
+
+            foreach (var producto in productosPorAgotarse)
+            {
+                Console.WriteLine($"Producto: {producto.Nombre}, Cantidad: {producto.Cantidad}");
+            }
+        }
+
+        public void ComprarProducto(Restaurante restaurante, Proveedor proveedor, string nombreProducto, int cantidad, decimal precioUnitario)
+        {
+            decimal costoTotal = cantidad * precioUnitario;
+            if (restaurante.Arca < costoTotal)
+            {
+                throw new InvalidOperationException("Fondos insuficientes en las arcas del restaurante.");
+            }
+
+            Producto producto = proveedor.VenderProducto(nombreProducto, cantidad, precioUnitario);
+            restaurante.Arca -= costoTotal;
+            AgregarProductoAInventario(restaurante, producto);
         }
     }
 }

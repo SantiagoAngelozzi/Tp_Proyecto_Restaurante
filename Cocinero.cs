@@ -15,20 +15,25 @@ namespace Tp_Progra2
 
         public void CrearPlato(Restaurante restaurante, Plato plato)
         {
-            restaurante.Menu.Add(plato);
+            restaurante += plato;
         }
 
         public void ModificarPlato(Restaurante restaurante, Plato plato, string nuevoNombre, List<Ingrediente> nuevosIngredientes, int nuevoTiempoPreparacion, decimal nuevoPrecio)
         {
-            plato.Nombre = nuevoNombre;
-            plato.Ingredientes = nuevosIngredientes;
-            plato.TiempoPreparacion = nuevoTiempoPreparacion;
-            plato.Precio = nuevoPrecio;
+            var platoExistente = restaurante.Menu.FirstOrDefault(p => p.Nombre == plato.Nombre);
+            if (platoExistente == null)
+            {
+                throw new KeyNotFoundException("El plato no se encontró en el menú.");
+            }
+
+            platoExistente.Nombre = nuevoNombre;
+            platoExistente.Ingredientes = nuevosIngredientes;
+            platoExistente.TiempoPreparacion = nuevoTiempoPreparacion;
         }
 
         public void EliminarPlato(Restaurante restaurante, Plato plato)
         {
-            restaurante.Menu.Remove(plato);
+            restaurante -= plato;
         }
     }
 }
