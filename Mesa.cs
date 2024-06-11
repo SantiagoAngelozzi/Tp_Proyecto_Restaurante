@@ -8,17 +8,16 @@ namespace Tp_Progra2
 {
     public class Mesa
     {
+        private bool ocupada = false;
         private int id;
         private int capacidad;
-        private bool ocupada;
         private Mesero meseroAsignado;
+        private Plato platoAsignado;
 
-        public Mesa(int id, int capacidad, bool ocupada, Mesero meseroAsignado)
+        public Mesa(int id, int capacidad)
         {
             this.id = id;
             this.capacidad = capacidad;
-            this.ocupada = false;
-            this.meseroAsignado = meseroAsignado;
         }
 
         public int Id
@@ -37,6 +36,12 @@ namespace Tp_Progra2
         {
             get => ocupada;
             set => ocupada = value;
+        }
+
+        public Plato PlatoAsignado
+        {
+            get => platoAsignado;
+            set => platoAsignado = value;
         }
 
         public Mesero MeseroAsignado

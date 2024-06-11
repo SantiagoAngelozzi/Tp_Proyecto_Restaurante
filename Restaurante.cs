@@ -6,7 +6,7 @@
         private List<Mesa> mesas;
         private List<Empleado> empleados;
         private List<Producto> inventario;
-        private List<Plato> menu; 
+        private List<Plato> menu;
         private decimal arca;
 
         public Restaurante(string nombre)
@@ -16,7 +16,7 @@
             this.empleados = new List<Empleado>();
             this.inventario = new List<Producto>();
             this.menu = new List<Plato>();
-            this.arca = 1000000;
+            this.arca = 100000;
         }
 
         public string Nombre

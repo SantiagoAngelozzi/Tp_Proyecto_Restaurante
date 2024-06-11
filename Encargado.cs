@@ -67,5 +67,10 @@ namespace Tp_Progra2
             restaurante.Arca -= costoTotal;
             AgregarProductoAInventario(restaurante, producto);
         }
+
+        public void AsignarMeseroAMesa(Mesero mesero, Mesa mesa)
+        {
+            mesa.MeseroAsignado = mesero;
+        }
     }
 }

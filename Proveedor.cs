@@ -14,9 +14,9 @@ namespace Tp_Progra2
         private string cuit;
         private string direccion;
         private string contacto;
-        private string diaEntrega;
+        private DateTime diaEntrega;
 
-        public Proveedor(TipoProducto tipoProducto, TipoPago tipoPago, string nombre, string cuit, string direccion,string contacto, string diaEntrega)
+        public Proveedor(TipoProducto tipoProducto, TipoPago tipoPago, string nombre, string cuit, string direccion,string contacto, DateTime diaEntrega)
         {
             this.tipoProducto = tipoProducto;
             this.tipoPago = tipoPago;
@@ -63,7 +63,7 @@ namespace Tp_Progra2
             set => contacto = value;
         }
 
-        public string DiaEntrega
+        public DateTime DiaEntrega
         {
             get => diaEntrega;
             set => diaEntrega = value;

@@ -13,14 +13,10 @@ namespace Tp_Progra2
 
         }
 
-        public void AsignarseUnaMesa() 
-        { 
-            //ver como hacer esto
-        }
-
-        public void AsignarPlatoAMesa()
+        public void AsignarPlatoAMesa(Mesa mesa, Plato plato)
         {
-            //ver como hacer esto
+            mesa.PlatoAsignado = plato;
+            mesa.Ocupada = true;
         }
     }
 }

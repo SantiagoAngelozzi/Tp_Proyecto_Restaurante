@@ -19,6 +19,11 @@ namespace Tp_Progra2
             this.precio = precio;
         }
 
+        public Producto(string nombre) 
+        {
+            this.nombre = nombre;
+        }
+
         public string Nombre
         {
             get => nombre;

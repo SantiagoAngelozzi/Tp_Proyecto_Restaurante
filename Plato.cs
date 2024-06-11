@@ -10,14 +10,13 @@ namespace Tp_Progra2
     {
         private string nombre;
         private List<Ingrediente> ingredientes;
-        private int tiempoPreparacion;
+        private float tiempoPreparacion;
         private decimal precio;
 
-        public Plato(string nombre, List<Ingrediente> ingredientes,decimal precio,int tiempoPreparacion)
+        public Plato(string nombre, List<Ingrediente> ingredientes, float tiempoPreparacion)
         {
             this.nombre = nombre;
             this.ingredientes = ingredientes;
-            this.precio = precio;
             this.tiempoPreparacion = tiempoPreparacion;
         }
 
@@ -39,35 +38,11 @@ namespace Tp_Progra2
             set => ingredientes = value;
         }
 
-        public int TiempoPreparacion
+        public float TiempoPreparacion
         {
             get => tiempoPreparacion;
             set => tiempoPreparacion = value;
         }
 
-    }
-
-    public class Ingrediente
-    {
-        private Producto producto;
-        private int cantidad;
-
-        public Ingrediente(Producto producto, int cantidad)
-        {
-            this.producto = producto;
-            this.cantidad = cantidad;
-        }
-
-        public Producto Producto
-        {
-            get => producto;
-            set => producto = value;
-        }
-
-        public int Cantidad
-        {
-            get => cantidad;
-            set => cantidad = value;
-        }
     }
 }
