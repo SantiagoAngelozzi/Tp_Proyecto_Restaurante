@@ -15,17 +15,25 @@ namespace Tp_Progra2
 
         public void AgregarProductoAInventario(Restaurante restaurante, Producto producto)
         {
-            restaurante += producto;
+            if (restaurante.Inventario.Any(p => p.Nombre == producto.Nombre))
+            {
+                throw new InvalidOperationException("El producto ya existe en el inventario.");
+            }
+            restaurante.Inventario.Add(producto);
         }
 
-        public void EstablecerPrecioPlato(Restaurante restaurante, Plato plato, decimal nuevoPrecio)
+        public void EstablecerPrecioPlato(Restaurante restaurante, string nombreDelPlato, decimal nuevoPrecio)
         {
-            var platoExistente = restaurante.Menu.FirstOrDefault(p => p.Nombre == plato.Nombre);
+            var platoExistente = restaurante.MenuPlatos.Keys.FirstOrDefault(plato => plato.Nombre == nombreDelPlato);
             if (platoExistente == null)
             {
-                throw new KeyNotFoundException("El plato no se encontró en el menú.");
+                throw new InvalidOperationException($"El plato {nombreDelPlato} no se encontró en el menú.");
             }
+
+            // Establecer el nuevo precio del plato
             platoExistente.Precio = nuevoPrecio;
+
+            Console.WriteLine($"El precio del plato {nombreDelPlato} ha sido establecido a {nuevoPrecio:C}.");
         }
 
         public void ConsultarStockVigente(Restaurante restaurante)
@@ -55,22 +63,50 @@ namespace Tp_Progra2
             }
         }
 
-        public void ComprarProducto(Restaurante restaurante, Proveedor proveedor, string nombreProducto, int cantidad, decimal precioUnitario)
+        public void ComprarProducto(Restaurante restaurante, Proveedor proveedor, string nombreProducto, int cantidad)
         {
-            decimal costoTotal = cantidad * precioUnitario;
+            var precioPorUnidad = proveedor.PrecioUnitario;
+            decimal costoTotal = cantidad * proveedor.PrecioUnitario;
             if (restaurante.Arca < costoTotal)
             {
                 throw new InvalidOperationException("Fondos insuficientes en las arcas del restaurante.");
             }
 
-            Producto producto = proveedor.VenderProducto(nombreProducto, cantidad, precioUnitario);
+            Producto producto = proveedor.VenderProducto(nombreProducto, cantidad, precioPorUnidad);
             restaurante.Arca -= costoTotal;
             AgregarProductoAInventario(restaurante, producto);
         }
 
+        public void PagarEmpleados(Restaurante restaurante)
+        {
+            decimal totalSueldos = 0;
+
+            foreach (var empleado in restaurante.Empleados)
+            {
+                totalSueldos += empleado.Sueldo;
+            }
+
+            if (restaurante.Arca < totalSueldos)
+            {
+                throw new InvalidOperationException("No hay suficiente balance para pagar a todos los empleados");
+            }
+            else
+            {
+                restaurante.Arca -= totalSueldos;
+            }
+
+            Console.WriteLine($"Total sueldos pagados: ${totalSueldos}");
+            Console.WriteLine($"Balance restante: ${restaurante.Arca}");
+        }
+
+        public void JuntarDineroDelDia(Restaurante restaurante)
+        {
+            //ver como hacer esto
+        }
+
         public void AsignarMeseroAMesa(Mesero mesero, Mesa mesa)
         {
-            mesa.MeseroAsignado = mesero;
+            //ver como hacer esto
         }
     }
 }

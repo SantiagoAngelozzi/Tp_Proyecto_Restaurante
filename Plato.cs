@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tp_Progra2
 {
-    public class Plato
+    public class Plato 
     {
         private string nombre;
         private List<Ingrediente> ingredientes;

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tp_Progra2
 {
-    public enum TipoPago
+    public enum TipoPagoPedido
     {
         billeteraVirtual,
-        TarjetaCredito,
         contado,
-        TransferenciaBancaria
+        tarjeta
     }
 }

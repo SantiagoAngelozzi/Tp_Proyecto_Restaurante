@@ -8,15 +8,16 @@ namespace Tp_Progra2
 {
     public class Mesero : Empleado
     {
+
         public Mesero(string nombre, string apellido, string direccion, string contacto, decimal sueldo) : base(nombre, apellido, direccion, contacto, sueldo)
         {
 
         }
 
-        public void AsignarPlatoAMesa(Mesa mesa, Plato plato)
+        public void AsignarPedidoAMesa()
         {
-            mesa.PlatoAsignado = plato;
-            mesa.Ocupada = true;
+            //ver como hacer esto
         }
+
     }
 }

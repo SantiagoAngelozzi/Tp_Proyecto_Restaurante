@@ -9,17 +9,19 @@ namespace Tp_Progra2
     public class Proveedor
     {
         private TipoProducto tipoProducto;
-        private TipoPago tipoPago;
+        private TipoPagoProveedor tipoPago;
         private string nombre;
         private string cuit;
         private string direccion;
         private string contacto;
-        private DateTime diaEntrega;
+        private string diaEntrega;
+        private decimal precioUnitario;
 
-        public Proveedor(TipoProducto tipoProducto, TipoPago tipoPago, string nombre, string cuit, string direccion,string contacto, DateTime diaEntrega)
+        public Proveedor(TipoProducto tipoProducto, TipoPagoProveedor tipoPago, decimal precioUnitario, string nombre, string cuit, string direccion,string contacto, string diaEntrega)
         {
             this.tipoProducto = tipoProducto;
             this.tipoPago = tipoPago;
+            this.precioUnitario = precioUnitario;
             this.nombre = nombre;
             this.cuit = cuit;
             this.direccion = direccion;
@@ -33,10 +35,16 @@ namespace Tp_Progra2
             set => tipoProducto = value;
         }
 
-        public TipoPago TipoPago
+        public TipoPagoProveedor TipoPago
         {
             get => tipoPago;
             set => tipoPago = value;
+        }
+
+        public decimal PrecioUnitario
+        {
+            get => precioUnitario;
+            set => precioUnitario = value;
         }
 
         public string Nombre
@@ -63,7 +71,7 @@ namespace Tp_Progra2
             set => contacto = value;
         }
 
-        public DateTime DiaEntrega
+        public string DiaEntrega
         {
             get => diaEntrega;
             set => diaEntrega = value;

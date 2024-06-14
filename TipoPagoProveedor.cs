@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tp_Progra2
 {
-    public enum TipoProducto
+    public enum TipoPagoProveedor
     {
-        carbohidratos,
-        embutidos,
-        bebidas,
-        bebidasAlcohlicas
-           
+        Tarjeta,
+        contado,
+        Transferencia
     }
 }

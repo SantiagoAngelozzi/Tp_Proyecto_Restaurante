@@ -8,11 +8,11 @@ namespace Tp_Progra2
 {
     public class Mesa
     {
-        private bool ocupada = false;
+        private bool cerrada = false; //si es true es por que ya pago
         private int id;
         private int capacidad;
         private Mesero meseroAsignado;
-        private Plato platoAsignado;
+        private List<Pedido> pedidos;
 
         public Mesa(int id, int capacidad)
         {
@@ -32,16 +32,16 @@ namespace Tp_Progra2
             set => capacidad = value;
         }
 
-        public bool Ocupada
+        public bool Cerrada
         {
-            get => ocupada;
-            set => ocupada = value;
+            get => cerrada;
+            set => cerrada = value;
         }
 
-        public Plato PlatoAsignado
+        public List<Pedido> Pedidos
         {
-            get => platoAsignado;
-            set => platoAsignado = value;
+            get { return pedidos; }
+            set { pedidos = value ?? new List<Pedido>();}
         }
 
         public Mesero MeseroAsignado
@@ -49,5 +49,6 @@ namespace Tp_Progra2
             get => meseroAsignado;
             set => meseroAsignado = value;
         }
+
     }
 }
