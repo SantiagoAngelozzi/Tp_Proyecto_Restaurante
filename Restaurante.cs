@@ -4,6 +4,7 @@
     {
         private string nombre;
         private List<Mesa> mesas;
+        private List<Pedido> pedidos;
         private List<Empleado> empleados;
         private List<Producto> inventario;
         private Dictionary<Plato, int> menuPlatos;
@@ -14,6 +15,7 @@
         {
             this.nombre = nombre;
             this.mesas = new List<Mesa>();
+            this.pedidos = new List<Pedido>();
             this.empleados = new List<Empleado>();
             this.inventario = new List<Producto>();
             this.menuPlatos = new Dictionary<Plato, int>();
@@ -123,7 +125,35 @@
 
         //REGISTROS DE CONSUMOS:
 
-        
+        public void ConsumoTotal()
+        {
+            //Resolver
+        }
+
+        public void ConsumoPorDelivery()
+        {
+            //Resolver
+        }
+
+        public void EstadoMesa()
+        {
+            //Resolver
+        }
+
+        public void RegistrarConsumoPorMedioPago()
+        {
+            //Resolver
+        }
+
+        public void ConsumoPorMesero()
+        {
+            //Resolver
+        }
+
+        public void Top3Ventas()
+        {
+            //Resolver
+        }
         
 
 
