@@ -13,6 +13,7 @@ namespace Tp_Progra2
         private string direccion;
         private string contacto;
         private decimal sueldo;
+        private string rol = " ";
 
         public Empleado(string nombre, string apellido, string direccion, string contacto, decimal sueldo)
         {
@@ -51,6 +52,12 @@ namespace Tp_Progra2
         {
             get => sueldo;
             set => sueldo = value;
+        }
+
+        public string Rol
+        {
+            get => rol;
+            set => rol = value;
         }
     }
 }

@@ -8,15 +8,27 @@ namespace Tp_Progra2
 {
     public class Mesero : Empleado
     {
-
+        private string rol = "mesero";
         public Mesero(string nombre, string apellido, string direccion, string contacto, decimal sueldo) : base(nombre, apellido, direccion, contacto, sueldo)
         {
 
         }
 
-        public void AsignarPedidoAMesa()
+        public string Rol
         {
-            //ver como hacer esto
+            get => rol;
+            set => rol = value;
+        }
+
+        public void ObtenerPedidos(Restaurante restaurante)
+        {
+            foreach (var pedido in restaurante.Pedidos)
+            {
+                if (pedido.TipoPedido == TipoPedido.mesa)
+                {
+                    //ver que hacer
+                }
+            }
         }
 
     }

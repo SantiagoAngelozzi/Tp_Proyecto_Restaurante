@@ -8,9 +8,16 @@ namespace Tp_Progra2
 {
     public class Encargado : Empleado
     {
+        private string rol = "encargado";
         public Encargado(string nombre, string apellido, string direccion, string contacto, decimal sueldo) : base(nombre, apellido, direccion, contacto, sueldo)
         {
 
+        }
+
+        public string Rol
+        {
+            get => rol;
+            set => rol = value;
         }
 
         public void AgregarProductoAInventario(Restaurante restaurante, Producto producto)
@@ -20,6 +27,16 @@ namespace Tp_Progra2
                 throw new InvalidOperationException("El producto ya existe en el inventario.");
             }
             restaurante.Inventario.Add(producto);
+        }
+
+        public void AgregarBebidaAlInventario(Restaurante restaurante, Bebida bebida)
+        {
+
+            if (restaurante.Inventario.Any(p => p.Nombre == bebida.Nombre))
+            {
+                throw new InvalidOperationException("El producto ya existe en el inventario.");
+            }
+            restaurante.Inventario.Add(bebida);
         }
 
         public void EstablecerPrecioPlato(Restaurante restaurante, string nombreDelPlato, decimal nuevoPrecio)
@@ -64,6 +81,21 @@ namespace Tp_Progra2
         }
 
         public void ComprarProducto(Restaurante restaurante, Proveedor proveedor, string nombreProducto, int cantidad)
+        {       
+                var precioPorUnidad = proveedor.PrecioUnitario;
+                decimal costoTotal = cantidad * proveedor.PrecioUnitario;
+                if (restaurante.Arca < costoTotal)
+                {
+                    throw new InvalidOperationException("Fondos insuficientes en las arcas del restaurante.");
+                }
+
+                Producto producto = proveedor.VenderProducto(nombreProducto, cantidad, precioPorUnidad);
+                restaurante.Arca -= costoTotal;
+                AgregarProductoAInventario(restaurante, producto);
+
+        }
+
+        public void ComprarBebidas(Restaurante restaurante, Proveedor proveedor, string nombreProducto, int cantidad, bool alcoholica)
         {
             var precioPorUnidad = proveedor.PrecioUnitario;
             decimal costoTotal = cantidad * proveedor.PrecioUnitario;
@@ -72,9 +104,9 @@ namespace Tp_Progra2
                 throw new InvalidOperationException("Fondos insuficientes en las arcas del restaurante.");
             }
 
-            Producto producto = proveedor.VenderProducto(nombreProducto, cantidad, precioPorUnidad);
+            Bebida bebida = proveedor.VenderBebida(nombreProducto, cantidad, precioPorUnidad, alcoholica);
             restaurante.Arca -= costoTotal;
-            AgregarProductoAInventario(restaurante, producto);
+            AgregarBebidaAlInventario(restaurante, bebida);
         }
 
         public void PagarEmpleados(Restaurante restaurante)

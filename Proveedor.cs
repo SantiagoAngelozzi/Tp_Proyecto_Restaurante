@@ -80,5 +80,10 @@ namespace Tp_Progra2
         {
             return new Producto(nombreProducto, cantidad, precioUnitario);
         }
+
+        public Bebida VenderBebida(string nombreProducto, int cantidad, decimal precioUnitario,bool alcohlica)
+        {
+            return new Bebida(nombreProducto, cantidad, precioUnitario, alcohlica);
+        }
     }
 }

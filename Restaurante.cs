@@ -34,6 +34,12 @@
             set { mesas = value ?? new List<Mesa>(); }
         }
 
+        public List<Pedido> Pedidos
+        {
+            get { return pedidos; }
+            set { pedidos = value ?? new List<Pedido>(); }
+        }
+
         public List<Empleado> Empleados
         {
             get { return empleados; }
@@ -118,6 +124,11 @@
             encargado.ComprarProducto(restaurante, proveedor, nombreProducto, cantidad);
         }
 
+        public void ComprarBebidaEncargado(Encargado encargado, Restaurante restaurante, Proveedor proveedor, string nombreBebida, int cantidad, bool alcoholica)
+        {
+            encargado.ComprarBebidas(restaurante, proveedor, nombreBebida, cantidad, alcoholica);
+        }
+
         public void JuntarElDineroDelDiaEncragado(Encargado encargado, Restaurante restaurante)
         {
             encargado.JuntarDineroDelDia(restaurante); // NO LO HICE TODAVIA
@@ -130,14 +141,40 @@
             //Resolver
         }
 
-        public void ConsumoPorDelivery()
+        public void RealizarEntregaDelivery(DeliveryBoy delivery, Restaurante restaurante)
         {
-            //Resolver
+            delivery.RealizarEntregas(restaurante);
         }
 
-        public void EstadoMesa()
+        public void ConsumoPorDelivery(DeliveryBoy delivery , Restaurante restaurante)
         {
-            //Resolver
+            var pedidos = delivery.ObtenerPedidos(restaurante);
+            var ingresosTotales = delivery.CalcularIngresos(pedidos);
+
+            Console.WriteLine($"los ingresos por parte de los delivery son: {ingresosTotales}");
+        }
+
+        public void EstadoMesa(Restaurante restaurante, int idMesa)
+        {
+            var mesas = restaurante.Mesas;
+            Mesa mesa = mesas.FirstOrDefault(m => m.Id == idMesa);
+
+            if (mesa == null)
+            {
+
+            }
+            else
+            {
+                if(mesa.Cerrada == false)
+                {
+                    Console.WriteLine($"la mesa {idMesa} esta ocupada aun y sin pagar");
+                }
+                else
+                {
+                    Console.WriteLine($"la mesa {idMesa} esta desocupada y paga");
+                }
+            }
+
         }
 
         public void RegistrarConsumoPorMedioPago()

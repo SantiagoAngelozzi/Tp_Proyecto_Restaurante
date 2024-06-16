@@ -8,10 +8,18 @@ namespace Tp_Progra2
 {
     public class Cocinero : Empleado
     {
+        private string rol = "cocinero";
         public Cocinero(string nombre, string apellido, string direccion, string contacto, decimal sueldo) : base(nombre, apellido, direccion, contacto, sueldo)
         {
 
         }
+
+        public string Rol
+        {
+            get => rol;
+            set => rol = value;
+        }
+
         public void CrearPlato(Restaurante restaurante, List<Ingrediente> ingredientes, string nombrePlato, float tiempoPreparacion, int cantidadDePlatos)
         {
             foreach (var ingrediente in ingredientes)
