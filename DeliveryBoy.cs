@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,13 +10,12 @@ namespace Tp_Progra2
 {
     public class DeliveryBoy : Empleado
     {
-        private List<Pedido> pedidosDelivery;
         private decimal ingresosTotales;
         private string rol = "delivery";
 
         public DeliveryBoy(string nombre, string apellido, string direccion, string contacto, decimal sueldo) : base(nombre, apellido, direccion, contacto, sueldo)
         {
-           this.pedidosDelivery = new List<Pedido>();
+
         }
 
         public string Rol
@@ -24,75 +24,70 @@ namespace Tp_Progra2
             set => rol = value;
         }
 
-        public List<Pedido> PedidosDelivery
-        {
-            get { return pedidosDelivery; }
-            set { pedidosDelivery = value ?? new List<Pedido>(); }
-        }
-
         public decimal IngresosTotales
         {
             get => ingresosTotales; 
             set => ingresosTotales = value;
         }
 
-
-        public List<Pedido> ObtenerPedidos(Restaurante restaurante)
+        public decimal CalcularConsumos(Restaurante restaurante)
         {
-           foreach (var pedido in restaurante.Pedidos)
-           {
-               if (pedido.TipoPedido == TipoPedido.delivery)
-               {
-                    PedidosDelivery.Add(pedido);
-               }
-           }
-           return PedidosDelivery;
-        }
-
-        public decimal CalcularIngresos(List<Pedido> pedidos)
-        {
-            IngresosTotales = 0;
-
-            foreach (var pedido in pedidos)
+            var pedidosDelivery = restaurante.Pedidos.Where(p => p.TipoPedido == TipoPedido.delivery).ToList();
+            foreach (var pedido in pedidosDelivery)
             {
-                IngresosTotales += pedido.PlatoPedido.Precio;
-
-                IngresosTotales += pedido.BebidaPedida.Precio;
-
-            }
-
-            return IngresosTotales;
-        }
-
-        public void RealizarEntregas(Restaurante restaurante) 
-        {
-
-            foreach (var pedido in restaurante.Pedidos)
-            {
-                if (pedido.TipoPedido == TipoPedido.delivery)
+                var plato = restaurante.MenuPlatos.Keys.FirstOrDefault(p => p.Nombre == pedido.PlatoPedido);
+                if (plato != null)
                 {
-                    // Verificar y actualizar el inventario de platos
-                    if (restaurante.MenuPlatos.ContainsKey(pedido.PlatoPedido) && restaurante.MenuPlatos[pedido.PlatoPedido] > 0)
-                    {
-                        restaurante.MenuPlatos[pedido.PlatoPedido] -= 1;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"No hay suficiente cantidad del plato {pedido.PlatoPedido.Nombre}");
-                        continue; // Saltar al siguiente pedido si no hay suficiente cantidad del plato
-                    }
+                    ingresosTotales += plato.Precio;
+                }
 
-                    // Verificar y actualizar el inventario de bebidas
-                    var bebidaInventario = restaurante.Inventario.Find(producto => producto.Nombre == pedido.BebidaPedida.Nombre && producto is Bebida);
-                    if (bebidaInventario != null && bebidaInventario.Cantidad > 0)
+                var bebida = restaurante.Inventario.FirstOrDefault(b => b.Nombre == pedido.BebidaPedida && b is Bebida);
+                if (bebida != null)
+                {
+                    ingresosTotales += bebida.Precio;
+                }
+            }
+            return ingresosTotales;
+        }
+
+        public void RealizarEntregaDelivery(Restaurante restaurante)
+        {
+            var pedidosDelivery = restaurante.Pedidos.Where(p => p.TipoPedido == TipoPedido.delivery).ToList();
+
+            foreach (var pedido in pedidosDelivery)
+            {
+                // Busca el plato en el diccionario MenuPlatos
+                var plato = restaurante.MenuPlatos.Keys.FirstOrDefault(p => p.Nombre == pedido.PlatoPedido);
+                if (plato != null)
+                {
+                    if (restaurante.MenuPlatos[plato] > 0)
                     {
-                        bebidaInventario.Cantidad -= 1;
+                        restaurante.MenuPlatos[plato]--;
                     }
                     else
                     {
-                        Console.WriteLine($"No hay suficiente cantidad de la bebida {pedido.BebidaPedida.Nombre}");
+                        Console.WriteLine($"No hay suficiente cantidad del plato {pedido.PlatoPedido}");
                     }
                 }
+
+                // Busca la bebida en el inventario
+                if (!string.IsNullOrEmpty(pedido.BebidaPedida))
+                {
+                    var bebidaInventario = restaurante.Inventario.Find(producto => producto.Nombre == pedido.BebidaPedida && producto is Bebida);
+                    if (bebidaInventario != null && bebidaInventario.Cantidad > 0)
+                    {
+                        bebidaInventario.Cantidad--;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No hay suficiente cantidad de la bebida {pedido.BebidaPedida}");
+                    }
+                }
+            }
+
+            foreach (var p in pedidosDelivery)
+            {
+                p.Pagado = true;
             }
         }
     }

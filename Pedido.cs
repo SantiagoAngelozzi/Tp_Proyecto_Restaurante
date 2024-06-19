@@ -8,37 +8,34 @@ namespace Tp_Progra2
 {
     public class Pedido
     {
-        private Plato platoPedido;
-        private Bebida bebidaPedida;
+        private string platoPedido;
+        private string bebidaPedida;
         private TipoPedido tipoPedido;
+        private TipoPagoPedido tipoPago;
         private bool pagado = false;
 
-        public Pedido(Plato platoPedido, Bebida bebidaPedida, TipoPedido tipoPedido) 
+        public Pedido(string platoPedido, string bebidaPedida, TipoPedido tipoPedido, TipoPagoPedido tipoPago) 
         {
             this.platoPedido = platoPedido;
             this.bebidaPedida = bebidaPedida;
             this.tipoPedido = tipoPedido;
+            this.tipoPago = tipoPago;
         }
 
-        public Pedido(Plato platoPedido, TipoPedido tipoPedido)
+        public Pedido(string platoPedido, TipoPedido tipoPedido, TipoPagoPedido tipoPago)
         {
             this.platoPedido = platoPedido;
             this.tipoPedido = tipoPedido;
-        }
+            this.tipoPago = tipoPago;
+        } 
 
-        public Pedido(Bebida bebidaPedida, TipoPedido tipoPedido)
-        {
-            this.bebidaPedida = bebidaPedida;
-            this.tipoPedido = tipoPedido;
-        }
-
-        public Plato PlatoPedido 
+        public string PlatoPedido 
         { 
             get => platoPedido;
             set => platoPedido = value;
         }
 
-        public Bebida BebidaPedida
+        public string BebidaPedida
         {
             get => bebidaPedida;
             set => bebidaPedida = value;
@@ -48,6 +45,12 @@ namespace Tp_Progra2
         {
             get => tipoPedido;
             set => tipoPedido = value;
+        }
+
+        public TipoPagoPedido TipoPago
+        {
+            get => tipoPago;
+            set => tipoPago = value;
         }
 
         public bool Pagado

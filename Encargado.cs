@@ -133,12 +133,34 @@ namespace Tp_Progra2
 
         public void JuntarDineroDelDia(Restaurante restaurante)
         {
-            //ver como hacer esto
+            decimal totalIngresosEmpleados = 0;
+
+            foreach (var empleado in restaurante.Empleados)
+            {
+                if (empleado is Mesero mesero)
+                {
+                    totalIngresosEmpleados += mesero.IngresosTotales;
+                    mesero.IngresosTotales = 0; // Reiniciar ingresos después de cobrar
+                }
+                else if (empleado is DeliveryBoy delivery)
+                {
+                    totalIngresosEmpleados += delivery.IngresosTotales;
+                    delivery.IngresosTotales = 0; // Reiniciar ingresos después de cobrar
+                }
+            }
+
+            restaurante.Arca += totalIngresosEmpleados;
         }
 
         public void AsignarMeseroAMesa(Mesero mesero, Mesa mesa)
         {
-            //ver como hacer esto
+            if (mesa.MeseroAsignado != null)
+            {
+                throw new InvalidOperationException($"La mesa {mesa.Id} ya tiene un mesero asignado: {mesa.MeseroAsignado.Nombre}.");
+            }
+
+            mesa.AsignarMesero(mesero, mesa);
+            Console.WriteLine($"El mesero {mesero.Nombre} ha sido asignado a la mesa {mesa.Id}.");
         }
     }
 }

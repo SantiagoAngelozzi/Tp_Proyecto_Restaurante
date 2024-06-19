@@ -8,11 +8,11 @@ namespace Tp_Progra2
 {
     public class Mesa
     {
-        private bool cerrada = false; //si es true es por que ya pago
+        private bool cerrada = false; //si es true es por que ya pago y porque esta desocupada.
         private int id;
         private int capacidad;
         private Mesero meseroAsignado;
-        private List<Pedido> pedidos;
+        private Pedido pedidoAsignado;
 
         public Mesa(int id, int capacidad)
         {
@@ -38,10 +38,10 @@ namespace Tp_Progra2
             set => cerrada = value;
         }
 
-        public List<Pedido> Pedidos
+        public Pedido PedidoAsignado
         {
-            get { return pedidos; }
-            set { pedidos = value ?? new List<Pedido>();}
+            get => pedidoAsignado;
+            set => pedidoAsignado = value;
         }
 
         public Mesero MeseroAsignado
@@ -50,5 +50,10 @@ namespace Tp_Progra2
             set => meseroAsignado = value;
         }
 
+        public void AsignarMesero(Mesero mesero, Mesa mesa)
+        {
+            MeseroAsignado = mesero;
+            mesero.MesaAsignada = mesa;
+        }
     }
 }

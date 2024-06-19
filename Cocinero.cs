@@ -42,7 +42,7 @@ namespace Tp_Progra2
             Plato nuevoPlato = new Plato(nombrePlato, ingredientes, tiempoPreparacion);
 
             // Agregar el nuevo plato al menú del restaurante
-            AgregarPlatoAlMenu(restaurante, nuevoPlato,cantidadDePlatos);
+            AgregarPlatoAlMenu(restaurante, nuevoPlato, cantidadDePlatos);
         }
 
         public void AgregarPlatoAlMenu(Restaurante restaurante, Plato plato, int cantidadDePlatos)
