@@ -121,7 +121,7 @@ namespace Tp_Progra2
 
         public decimal CalcularConsumo(Restaurante restaurante)
         {
-            var pedidosMesa = restaurante.Pedidos.Where(p => p.TipoPedido == TipoPedido.mesa && !p.Pagado).ToList();
+            var pedidosMesa = restaurante.Pedidos.Where(p => p.TipoPedido == TipoPedido.mesa && p.Pagado).ToList();
             foreach (var pedido in pedidosMesa)
             {
                 var plato = restaurante.MenuPlatos.Keys.FirstOrDefault(p => p.Nombre == pedido.PlatoPedido);

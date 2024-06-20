@@ -102,6 +102,7 @@ namespace Tp_Progra2
         {
             var platosConProducto = restaurante.MenuPlatos.Keys.Where(plato => plato.Ingredientes.Any(ingrediente => ingrediente.Producto.Nombre == producto.Nombre)).ToList();
 
+            // Verificar si se encontraron platos
             if (platosConProducto.Count == 0)
             {
                 throw new InvalidOperationException($"No hay platos en el menú que contengan el producto {producto.Nombre}.");
@@ -116,19 +117,19 @@ namespace Tp_Progra2
             }
         }
 
-        public void MostrarPlatosSinStock(Restaurante restaurante)
+        public void MostrarPlatosDisponibles(Restaurante restaurante)
         {
 
-            var platosSinStock = restaurante.MenuPlatos.Where(entry => entry.Value == 0).Select(entry => entry.Key).ToList();
+            var platosDisponibles = restaurante.MenuPlatos.Where(entry => entry.Value != 0).Select(entry => entry.Key).ToList();
 
-            if (platosSinStock.Count == 0)
+            if (platosDisponibles.Count == 0)
             {
-                throw new InvalidOperationException("No hay platos sin stock en el menú.");
+                throw new InvalidOperationException("No hay platos disponibles en el menú.");
             }
             else
             {
-                Console.WriteLine("Platos sin stock en el menú:");
-                foreach (var plato in platosSinStock)
+                Console.WriteLine("Platos disponibles en el menú:");
+                foreach (var plato in platosDisponibles)
                 {
                     Console.WriteLine(plato.Nombre);
                 }

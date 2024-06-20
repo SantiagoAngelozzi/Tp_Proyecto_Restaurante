@@ -50,7 +50,7 @@ namespace Tp_Progra2
             // Establecer el nuevo precio del plato
             platoExistente.Precio = nuevoPrecio;
 
-            Console.WriteLine($"El precio del plato {nombreDelPlato} ha sido establecido a {nuevoPrecio:C}.");
+            Console.WriteLine($"El precio del plato {nombreDelPlato} ha sido establecido a {nuevoPrecio}.");
         }
 
         public void ConsultarStockVigente(Restaurante restaurante)

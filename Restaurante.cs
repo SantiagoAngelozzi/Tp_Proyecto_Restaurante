@@ -103,9 +103,9 @@
             cocinero.MostrarPlatosSegunProducto(restaurante, producto);
         }
 
-        public void MostrarPlatosSinStockCocinero(Cocinero cocinero, Restaurante restaurante)
+        public void MostrarPlatosDisponiblesCocinero(Cocinero cocinero, Restaurante restaurante)
         {
-            cocinero.MostrarPlatosSinStock(restaurante);
+            cocinero.MostrarPlatosDisponibles(restaurante);
         }
 
         public void EstablecerPrecioPlatoEncargado(Encargado encargado, Restaurante restaurante, string nombreDelPlato, decimal nuevoPrecio)
@@ -145,7 +145,7 @@
 
         public void ConsumoPorDelivery(Restaurante restaurante, DeliveryBoy delivery)
         {
-            var totalConsumo = delivery.CalcularConsumos(restaurante);
+            decimal totalConsumo = delivery.CalcularConsumos(restaurante);
 
             Console.WriteLine($"Ingresos totales por consumo de delivery: {totalConsumo}");
         }
@@ -266,6 +266,8 @@
             restaurante.Mesas.Remove(mesa);
             return restaurante;
         }
+
+
     }
 }
 

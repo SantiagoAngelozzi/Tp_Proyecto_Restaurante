@@ -34,8 +34,8 @@ namespace Tp_Progra2
 
         public List<Ingrediente> Ingredientes
         {
-            get => ingredientes;
-            set => ingredientes = value;
+            get { return ingredientes; }
+            set { ingredientes = value ?? new List<Ingrediente>(); }
         }
 
         public float TiempoPreparacion
