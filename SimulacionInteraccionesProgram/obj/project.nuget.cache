@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "xxv07hX16iD9gjmJt1QWgQLTcBaO1iThDD1/OyTNLspsAPQUBKgXQVZKP0lIxQsfJQ+mCmuIWYkas0s/FC/PLw==",
+  "success": true,
+  "projectFilePath": "E:\\Tp_Progra2\\SimulacionInteraccionesProgram\\SimulacionInteraccionesProgram.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\angelozzi_22\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\angelozzi_22\\.nuget\\packages\\moq\\4.20.70\\moq.4.20.70.nupkg.sha512",
+    "C:\\Users\\angelozzi_22\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

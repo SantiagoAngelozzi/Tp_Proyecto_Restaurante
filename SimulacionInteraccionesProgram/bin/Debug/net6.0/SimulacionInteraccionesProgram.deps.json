@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "SimulacionInteraccionesProgram/1.0.0": {
+        "runtime": {
+          "SimulacionInteraccionesProgram.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SimulacionInteraccionesProgram/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

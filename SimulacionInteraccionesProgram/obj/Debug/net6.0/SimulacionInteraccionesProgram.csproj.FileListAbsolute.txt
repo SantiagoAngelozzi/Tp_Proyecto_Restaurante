@@ -1,0 +1,14 @@
+E:\Tp_Progra2\SimulacionInteraccionesProgram\bin\Debug\net6.0\SimulacionInteraccionesProgram.exe
+E:\Tp_Progra2\SimulacionInteraccionesProgram\bin\Debug\net6.0\SimulacionInteraccionesProgram.deps.json
+E:\Tp_Progra2\SimulacionInteraccionesProgram\bin\Debug\net6.0\SimulacionInteraccionesProgram.runtimeconfig.json
+E:\Tp_Progra2\SimulacionInteraccionesProgram\bin\Debug\net6.0\SimulacionInteraccionesProgram.dll
+E:\Tp_Progra2\SimulacionInteraccionesProgram\bin\Debug\net6.0\SimulacionInteraccionesProgram.pdb
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\SimulacionInteraccionesProgram.GeneratedMSBuildEditorConfig.editorconfig
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\SimulacionInteraccionesProgram.AssemblyInfoInputs.cache
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\SimulacionInteraccionesProgram.AssemblyInfo.cs
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\SimulacionInteraccionesProgram.csproj.CoreCompileInputs.cache
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\SimulacionInteraccionesProgram.dll
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\refint\SimulacionInteraccionesProgram.dll
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\SimulacionInteraccionesProgram.pdb
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\SimulacionInteraccionesProgram.genruntimeconfig.cache
+E:\Tp_Progra2\SimulacionInteraccionesProgram\obj\Debug\net6.0\ref\SimulacionInteraccionesProgram.dll
