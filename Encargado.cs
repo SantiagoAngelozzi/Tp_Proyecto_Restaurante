@@ -113,7 +113,10 @@ namespace Tp_Progra2
         {
             decimal totalSueldos = 0;
 
-            foreach (var empleado in restaurante.Empleados)
+            // Ordenar empleados por prioridad: primero encargados, luego cocineros, y finalmente meseros y delivery
+            var empleadosOrdenados = restaurante.Empleados.OrderByDescending(e => e is Encargado).ThenByDescending(e => e is Cocinero).ThenBy(e => e is Mesero || e is DeliveryBoy).ToList();
+
+            foreach (var empleado in empleadosOrdenados)
             {
                 totalSueldos += empleado.Sueldo;
             }
@@ -124,7 +127,20 @@ namespace Tp_Progra2
             }
             else
             {
-                restaurante.Arca -= totalSueldos;
+                // Pagar a cada empleado según el orden
+                foreach (var empleado in empleadosOrdenados)
+                {
+                    if (restaurante.Arca >= empleado.Sueldo)
+                    {
+                        restaurante.Arca -= empleado.Sueldo;
+                        Console.WriteLine($"Pagado {empleado.Sueldo} a {empleado.GetType().Name} {empleado.Nombre}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No se puede pagar a {empleado.GetType().Name} {empleado.Nombre} debido a fondos insuficientes.");
+                        throw new InvalidOperationException("Fondos insuficientes durante el pago a los empleados");
+                    }
+                }
             }
 
             Console.WriteLine($"Total sueldos pagados: ${totalSueldos}");
