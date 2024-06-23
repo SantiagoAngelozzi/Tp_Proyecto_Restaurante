@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("SimulacionInteraccionesProgram")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("TesteoFunciones")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+350e7b4829bc957596457d750e643289749a320c")]
-[assembly: System.Reflection.AssemblyProductAttribute("SimulacionInteraccionesProgram")]
-[assembly: System.Reflection.AssemblyTitleAttribute("SimulacionInteraccionesProgram")]
+[assembly: System.Reflection.AssemblyProductAttribute("TesteoFunciones")]
+[assembly: System.Reflection.AssemblyTitleAttribute("TesteoFunciones")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
