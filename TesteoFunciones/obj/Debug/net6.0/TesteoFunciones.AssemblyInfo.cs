@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TesteoFunciones")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+350e7b4829bc957596457d750e643289749a320c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b3032971dd3752474b3a2f8f19205e8d53d806d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TesteoFunciones")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TesteoFunciones")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

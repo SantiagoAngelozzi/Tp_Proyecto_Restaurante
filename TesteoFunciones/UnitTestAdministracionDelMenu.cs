@@ -91,6 +91,46 @@ namespace TesteoFunciones
 
             restaurante.ModificarPlatoCocinero(cocinero, restaurante, "Choripan", "Chori Pan", ingredientes, 2);
         }
-    }
 
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MostrarPlatoSegunProducto_NoHay()
+        {
+            Restaurante restaurante = new Restaurante("Buen Comer");
+            Cocinero cocinero = new Cocinero("Santiago", "Angelozzi", "calle falsa 123", "1127141996", 1000);
+
+            Producto producto1 = new Producto("Pan");
+            Producto producto2 = new Producto("Chorizo");
+
+            Ingrediente ingrediente1 = new Ingrediente(producto1, 1);
+            Ingrediente ingrediente2 = new Ingrediente(producto2, 2);
+
+            List<Ingrediente> ingredientes = new List<Ingrediente>();
+
+            ingredientes.Add(ingrediente1);
+            ingredientes.Add(ingrediente2);
+
+            restaurante.MostrarPlatosSegunProductoCocinero(cocinero,restaurante,producto1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MostrarPlatosDisponibles_NoHay()
+        {
+            Restaurante restaurante = new Restaurante("Buen Comer");
+            Cocinero cocinero = new Cocinero("Santiago", "Angelozzi", "calle falsa 123", "1127141996", 1000);
+
+            restaurante.MostrarPlatosDisponiblesCocinero(cocinero,restaurante);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void EstablecerPrecioPlato_Inexistente()
+        {
+            Restaurante restaurante = new Restaurante("Buen Comer");
+            Encargado encargado = new Encargado("Santiago", "Angelozzi", "calle falsa 123", "1127141996", 1000);
+
+            restaurante.EstablecerPrecioPlatoEncargado(encargado, restaurante,"platoInexistente", 20);
+        }
+    }
 }
