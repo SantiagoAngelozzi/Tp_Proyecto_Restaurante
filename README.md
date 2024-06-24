@@ -10,13 +10,13 @@ Este proyecto consiste en la implementación de un sistema de logística para un
 El principio de encapsulamiento se ha aplicado extensivamente para asegurar que los datos internos de las clases estén protegidos del acceso no autorizado. Esto se logra mediante el uso de modificadores de acceso y la implementación de métodos getter y setter para controlar el acceso a las propiedades de las clases.
 
 ### Herencia
-La herencia se ha utilizado para crear una jerarquía de clases que permite la reutilización del código y la creación de relaciones lógicas entre las entidades del sistema. Por ejemplo, la clase `Empleado` es una clase base de la cual heredan clases específicas como `Cocinero`, `Encargado`, `Mesero` y `DeliveryBoy`.
+La herencia se ha utilizado para crear una jerarquía de clases que permite la reutilización del código y la creación de relaciones lógicas entre las entidades del sistema. Por ejemplo, la clase Empleado es una clase base de la cual heredan clases específicas como Cocinero, Encargado, Mesero y DeliveryBoy.
 
 ### Sobrecarga de Constructores
 La sobrecarga de constructores se ha empleado para proporcionar múltiples formas de instanciar objetos de las clases. Esto permite una mayor flexibilidad al crear instancias de las clases con diferentes conjuntos de parámetros, adecuándose a diversas necesidades del sistema.
 
 ### Clases Abstractas
-Las clases abstractas, como `Empleado`, se han utilizado para definir una estructura común y comportamientos compartidos entre las subclases. Estas clases no pueden ser instanciadas directamente y sirven como plantilla para las clases derivadas, asegurando que todas implementen los métodos definidos en la clase abstracta.
+Las clases abstractas, como Empleado, se han utilizado para definir una estructura común y comportamientos compartidos entre las subclases. Estas clases no pueden ser instanciadas directamente y sirven como plantilla para las clases derivadas, asegurando que todas implementen los métodos definidos en la clase abstracta.
 
 ### Excepciones
 La gestión de excepciones es crucial para manejar errores y condiciones inesperadas que pueden ocurrir durante la ejecución del sistema. Se han implementado mecanismos de control de excepciones para asegurar que el sistema pueda manejar errores de manera elegante y mantener la integridad de los datos.
