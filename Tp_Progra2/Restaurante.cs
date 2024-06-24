@@ -230,44 +230,6 @@
             Console.WriteLine($"el consumo total es: $ {consumoTotal}");
         }
 
-        //Sobrecarga de operadores para agregar a las respectivas listas:
-        public static Restaurante operator +(Restaurante restaurante, Empleado empleado)
-        {
-            restaurante.Empleados.Add(empleado);
-            return restaurante;
-        }
-
-        public static Restaurante operator -(Restaurante restaurante, Empleado empleado)
-        {
-            restaurante.Empleados.Remove(empleado);
-            return restaurante;
-        }
-
-        public static Restaurante operator +(Restaurante restaurante, Proveedor proveedor)
-        {
-            restaurante.Proveedores.Add(proveedor);
-            return restaurante;
-        }
-
-        public static Restaurante operator -(Restaurante restaurante, Proveedor proveedor)
-        {
-            restaurante.Proveedores.Remove(proveedor);
-            return restaurante;
-        }
-
-        public static Restaurante operator +(Restaurante restaurante, Mesa mesa)
-        {
-            restaurante.Mesas.Add(mesa);
-            return restaurante;
-        }
-
-        public static Restaurante operator -(Restaurante restaurante, Mesa mesa)
-        {
-            restaurante.Mesas.Remove(mesa);
-            return restaurante;
-        }
-
-
     }
 }
 
