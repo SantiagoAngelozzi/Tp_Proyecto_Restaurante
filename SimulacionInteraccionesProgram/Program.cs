@@ -115,36 +115,35 @@ namespace SimulacionInteraccionesProgram
 
             restaurante.RealizarEntregaDelivery(delivery1, restaurante);
 
-            meseroJefe.AsignarPedidosAmesas(restaurante);
+            restaurante.AsignarPedidosAMesasMesero(meseroJefe, restaurante);
 
-            encargado1.AsignarMeseroAMesa(mesero1, mesa1);
-            encargado1.AsignarMeseroAMesa(mesero2, mesa2);
-            encargado1.AsignarMeseroAMesa(mesero3, mesa3);
-            encargado1.AsignarMeseroAMesa(mesero4, mesa4);
+            restaurante.AsignarMeseroAMesaEncargado(encargado1, mesero1, mesa1);
+            restaurante.AsignarMeseroAMesaEncargado(encargado1, mesero2, mesa2);
+            restaurante.AsignarMeseroAMesaEncargado(encargado1 ,mesero3, mesa3);
+            restaurante.AsignarMeseroAMesaEncargado(encargado1, mesero4, mesa4);
 
-            mesero1.CobrarMesa(restaurante);
-            mesero2.CobrarMesa(restaurante);
-            mesero3.CobrarMesa(restaurante);
-            mesero4.CobrarMesa(restaurante);
+            restaurante.CobrarMesa(mesero1, restaurante);
+            restaurante.CobrarMesa(mesero2, restaurante);
+            restaurante.CobrarMesa(mesero3, restaurante);
+            restaurante.CobrarMesa(mesero4, restaurante);
 
             //CONSUMO TOTAL
-            restaurante.ConsumoTotal(restaurante, meseroJefe, delivery1);
+            restaurante.ConsumoTotalRegistroConsumo(restaurante, meseroJefe, delivery1);
 
             //CONSUMO DE DELIVERY Y MESERO
-            restaurante.ConsumoPorDelivery(restaurante, delivery1);
-            restaurante.ConsumoPorMesero(restaurante, mesero1);
-
+            restaurante.ConsumoPorDeliveryRegistroConsumo(restaurante, delivery1);
+            restaurante.ConsumoPorMeseroRegistroConsumo(restaurante, mesero1);
 
             //CONSUMO POR MEDIO DE PAGO
-            restaurante.RegistrarConsumoPorMedioPago(restaurante);
+            restaurante.ConsumoPorMedioPagoRegistroConsumo(restaurante);
 
             restaurante.PagarEmpleadosEncargado(encargado1, restaurante);
 
             //TOP 3 VENTAS
-            restaurante.Top3Ventas();
+            restaurante.Top3VentasRegistroConsumo(restaurante);
 
             //CONSULTAR COSUMO NO PAGO DE UNA MESA EN PARTICUALR
-            restaurante.EstadoMesa(restaurante, 1);
+            restaurante.EstadoMesaRegistroConsumo(restaurante, 1);
 
             restaurante.JuntarElDineroDelDiaEncragado(encargado1, restaurante);
         }

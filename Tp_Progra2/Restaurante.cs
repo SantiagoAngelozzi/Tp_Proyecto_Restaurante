@@ -143,91 +143,54 @@
             delivery.RealizarEntregaDelivery(restaurante);
         }
 
-        public void ConsumoPorDelivery(Restaurante restaurante, DeliveryBoy delivery)
+        public void ConsumoPorDeliveryRegistroConsumo(Restaurante restaurante, DeliveryBoy delivery)
         {
-            decimal totalConsumo = delivery.CalcularConsumos(restaurante);
+            RegistroDeConsumos.ConsumoPorDelivery(restaurante, delivery);
+        }
 
-            Console.WriteLine($"Ingresos totales por consumo de delivery: {totalConsumo}");
+        //encargado
+
+        public void AsignarMeseroAMesaEncargado(Encargado encargado, Mesero mesero, Mesa mesa)
+        {
+            encargado.AsignarMeseroAMesa(mesero, mesa);
         }
 
         //mesero
 
-        public void EstadoMesa(Restaurante restaurante, int idMesa)
+        public void AsignarPedidosAMesasMesero(Mesero mesero, Restaurante restaurante)
         {
-            var mesa = restaurante.Mesas.FirstOrDefault(m => m.Id == idMesa);
-
-            if (mesa == null)
-            {
-                Console.WriteLine($"La mesa con ID {idMesa} no existe en el restaurante.");
-                return;
-            }
-
-            if (mesa.Cerrada)
-            {
-                Console.WriteLine($"La mesa con ID {idMesa} ya está paga.");
-            }
-            else
-            {
-                Console.WriteLine($"La mesa con ID {idMesa} aún no está paga.");
-            }
+            mesero.AsignarPedidosAmesas(restaurante);
         }
-        public void ConsumoPorMesero(Restaurante restaurante, Mesero mesero)
+
+        public void CobrarMesa(Mesero mesero, Restaurante restaurante)
         {
-            var totalConsumo = mesero.CalcularConsumo(restaurante);
-            Console.WriteLine($"Ingresos totales por consumo en mesas: {totalConsumo}");
+            mesero.CobrarMesa(restaurante);
+        }
+
+        public void EstadoMesaRegistroConsumo(Restaurante restaurante, int idMesa)
+        {
+            RegistroDeConsumos.EstadoMesa(restaurante, idMesa);
+        }
+        public void ConsumoPorMeseroRegistroConsumo(Restaurante restaurante, Mesero mesero)
+        {
+            RegistroDeConsumos.ConsumoPorMesero(restaurante, mesero);
         }
 
         //ambos
 
-        public void RegistrarConsumoPorMedioPago(Restaurante restaurante)
+        public void ConsumoPorMedioPagoRegistroConsumo(Restaurante restaurante)
         {
-            var pedidosAgrupadosPorTipoPago = restaurante.Pedidos.GroupBy(p => p.TipoPago).ToList();
-
-            foreach (var grupo in pedidosAgrupadosPorTipoPago)
-            {
-                Console.WriteLine($"Tipo de Pago: {grupo.Key} - Cantidad de Pedidos: {grupo.Count()}");
-            }
+            RegistroDeConsumos.ConsumoPorMedioPago(restaurante);
         }
 
-        public void Top3Ventas()
+        public void Top3VentasRegistroConsumo(Restaurante restaurante)
         {
-            var pedidosPagados = Pedidos.Where(p => p.Pagado).ToList();
-
-            var top3Pedidos = pedidosPagados
-                .OrderByDescending(p =>
-                {
-                    var plato = MenuPlatos.Keys.FirstOrDefault(pl => pl.Nombre == p.PlatoPedido);
-                    return plato != null ? plato.Precio : 0;
-                })
-                .Take(3)
-                .ToList();
-
-            Console.WriteLine("Top 3 ventas:");
-
-            foreach (var pedido in top3Pedidos)
-            {
-                var plato = MenuPlatos.Keys.FirstOrDefault(pl => pl.Nombre == pedido.PlatoPedido);
-                var bebida = Inventario.OfType<Bebida>().FirstOrDefault(b => b.Nombre == pedido.BebidaPedida);
-
-                if (plato != null)
-                {
-                    Console.WriteLine($"Plato: {plato.Nombre}, Precio: {plato.Precio:C}");
-                }
-                if (bebida != null)
-                {
-                    Console.WriteLine($"Bebida: {bebida.Nombre}, Precio: {bebida.Precio:C}");
-                }
-            }
+            RegistroDeConsumos.Top3Ventas(restaurante);
         }
 
-        public void ConsumoTotal(Restaurante restaurante, Mesero mesero, DeliveryBoy delivery)
+        public void ConsumoTotalRegistroConsumo(Restaurante restaurante, Mesero mesero, DeliveryBoy delivery)
         {
-            var consumoPorDelivery = delivery.CalcularConsumos(restaurante);
-            var consumoPorMeseros = mesero.CalcularConsumo(restaurante);
-
-            var consumoTotal = consumoPorDelivery + consumoPorMeseros;
-
-            Console.WriteLine($"el consumo total es: $ {consumoTotal}");
+            RegistroDeConsumos.ConsumoTotal(restaurante, mesero, delivery);
         }
 
     }
