@@ -166,6 +166,8 @@ namespace Tp_Progra2
             }
 
             restaurante.Arca += totalIngresosEmpleados;
+            Console.WriteLine($"total de ingresos del dia: ${totalIngresosEmpleados}");
+            Console.WriteLine($"Balance restante: ${restaurante.Arca}");
         }
 
         public void AsignarMeseroAMesa(Mesero mesero, Mesa mesa)

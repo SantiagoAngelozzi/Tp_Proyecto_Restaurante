@@ -7,20 +7,21 @@ namespace SimulacionInteraccionesProgram
         {
             Restaurante restaurante = new Restaurante("buen comer");
 
-            Cocinero cocinero1 = new Cocinero("esteban", "quito", "calle falsa 123", "1127141996", 150);
-            Encargado encargado1 = new Encargado("Juan", "Cruz", "calle verdadera 123", "1127141123", 500);
-            Mesero mesero1 = new Mesero("Juan", "Cruz", "calle verdadera 124", "1127141124", 100);
-            Mesero mesero2 = new Mesero("Juan", "Cruz", "calle verdadera 125", "1127141124", 100);
-            Mesero mesero3 = new Mesero("Juan", "Cruz", "calle verdadera 126", "1127141124", 100);
-            Mesero mesero4 = new Mesero("Juan", "Cruz", "calle verdadera 127", "1127141124", 100);
-            Mesero meseroJefe = new Mesero("Juan", "Cruz", "calle verdadera 124", "1127141124", 150);
-            DeliveryBoy delivery1 = new DeliveryBoy("Juan", "Cruz", "calle verdadera 125", "1127141125", 100);
-            DeliveryBoy delivery2 = new DeliveryBoy("Esteban", "Quito", "calle verdadera 125", "1127141125", 100);
+            Cocinero cocinero1 = new Cocinero("esteban", "quito", "calle falsa 123", "1127141996", 50);
+            Encargado encargado1 = new Encargado("Juan", "Cruz", "calle verdadera 123", "1127141123", 100);
+            Mesero mesero1 = new Mesero("Juan", "Cruz", "calle verdadera 124", "1127141124", 10);
+            Mesero mesero2 = new Mesero("Juan", "Cruz", "calle verdadera 125", "1127141124", 10);
+            Mesero mesero3 = new Mesero("Juan", "Cruz", "calle verdadera 126", "1127141124", 10);
+            Mesero mesero4 = new Mesero("Juan", "Cruz", "calle verdadera 127", "1127141124", 10);
+            Mesero meseroJefe = new Mesero("Juan", "Cruz", "calle verdadera 124", "1127141124", 15);
+            DeliveryBoy delivery1 = new DeliveryBoy("Juan", "Cruz", "calle verdadera 125", "1127141125", 10);
+            DeliveryBoy delivery2 = new DeliveryBoy("Esteban", "Quito", "calle verdadera 125", "1127141125", 10);
 
             restaurante.Empleados.Add(cocinero1);
             restaurante.Empleados.Add(delivery1);
             restaurante.Empleados.Add(delivery2);
             restaurante.Empleados.Add(encargado1);
+            restaurante.Empleados.Add(meseroJefe);
             restaurante.Empleados.Add(mesero1);
             restaurante.Empleados.Add(mesero2);
             restaurante.Empleados.Add(mesero3);
