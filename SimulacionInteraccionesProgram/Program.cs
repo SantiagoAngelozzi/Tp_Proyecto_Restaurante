@@ -111,8 +111,8 @@ namespace SimulacionInteraccionesProgram
             //CONSULTA DE PLATOS DISPONIBLES
             restaurante.MostrarPlatosDisponiblesCocinero(cocinero1, restaurante);
 
-            restaurante.EstablecerPrecioPlatoEncargado(encargado1, restaurante, "pancho", 100);
-            restaurante.EstablecerPrecioPlatoEncargado(encargado1, restaurante, "choripan", 100);
+            restaurante.EstablecerPrecioPlatoEncargado(encargado1, restaurante, "pancho", 200);
+            restaurante.EstablecerPrecioPlatoEncargado(encargado1, restaurante, "choripan", 200);
 
             restaurante.RealizarEntregaDelivery(delivery1, restaurante);
 
